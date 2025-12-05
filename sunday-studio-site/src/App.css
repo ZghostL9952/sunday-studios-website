@@ -1,0 +1,510 @@
+.app {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 100px;
+  isolation: isolate;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.nav-left {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-left a {
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-left a:hover {
+  color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.nav-right {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff9de0;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff9de0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 100px;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Games Gallery */
+.games-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 50px;;
+  margin-bottom: 6rem;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(100, 108, 255, 0.3);
+}
+
+.game-image-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #e0e0e0;
+  position: relative;
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-image {
+  transform: scale(1.05);
+}
+
+.game-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  padding: 2.5rem;
+  letter-spacing: 0.05em;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.game-card:hover .game-title {
+  opacity: 1;
+}
+
+.game-info {
+  padding: 2rem 2.5rem;
+}
+
+.game-description {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* About Page */
+.about-page {
+  display: flex;
+  position: relative;
+  padding: 0;
+}
+
+.about-content {
+  flex: 1;
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-intro {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+}
+
+.about-intro h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.1em;
+}
+
+.about-intro p {
+  font-size: 1.2rem;
+  color: #666666;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Team Side Menu */
+.team-side-menu {
+  position: fixed;
+  left: 0;
+  top: 120px;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  z-index: 100;
+  transition: width 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.team-side-menu:hover {
+  width: 200px;
+}
+
+.side-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  gap: 0.25rem;
+}
+
+.side-menu-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35px;
+}
+
+.side-menu-item:hover {
+  background-color: rgba(250, 242, 161, 0.2);
+}
+
+.menu-line {
+  width: 25px;
+  height: 2.5px;
+  background-color: #333333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.team-name {
+  color: #333333;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+
+/* Team Sections */
+.team-section {
+  margin-bottom: 6rem;
+  scroll-margin-top: 120px;
+}
+
+.team-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 3rem 0;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.team-members-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.member-image-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 0.5rem 0;
+}
+
+.member-role {
+  font-size: 1rem;
+  color: #666666;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    height: 70px;
+  }
+
+  .nav-left {
+    gap: 1rem;
+  }
+
+  .nav-left svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 2rem 1rem;
+  }
+
+  .games-gallery {
+    gap: 3rem;
+  }
+
+  .game-info {
+    padding: 1.5rem 2rem;
+  }
+
+  .game-title {
+    font-size: 1.75rem;
+    padding: 2rem;
+  }
+
+  .game-description {
+    font-size: 1.1rem;
+  }
+
+  .team-side-menu {
+    width: 50px;
+    top: 90px;
+    left: 0;
+  }
+
+  .team-side-menu:hover {
+    width: 180px;
+  }
+
+  .menu-line {
+    width: 25px;
+    height: 2.5px;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.5rem;
+  }
+
+  .member-image-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .about-intro {
+    padding: 3rem 1.5rem;
+  }
+
+  .about-intro h2 {
+    font-size: 2rem;
+  }
+
+  .about-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-left,
+  .nav-center,
+  .nav-right {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-right {
+    gap: 1.5rem;
+  }
+
+  .main-content {
+    margin-top: 120px;
+  }
+
+  .team-side-menu {
+    width: 45px;
+    top: 120px;
+    left: 0;
+  }
+
+  .team-side-menu:hover {
+    width: 160px;
+  }
+
+  .menu-line {
+    width: 20px;
+    height: 2px;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+  }
+
+  .member-image-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .member-name {
+    font-size: 1.1rem;
+  }
+
+  .member-role {
+    font-size: 0.9rem;
+  }
+}
