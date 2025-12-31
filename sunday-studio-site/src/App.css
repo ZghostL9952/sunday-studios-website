@@ -1,6 +1,7 @@
 .app {
   min-height: 100vh;
-  background: #ffffff;
+  width: 100%;
+  background: #000000;
 }
 
 /* Navigation Bar */
@@ -12,53 +13,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 3rem;
+  background: transparent;
   z-index: 1000;
-  height: 100px;
-  isolation: isolate;
+  height: auto;
+  transition: background-color 0.3s ease;
 }
 
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .nav-left {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
-  flex: 1;
-}
-
-.nav-left a {
-  color: #ffffff;
-  transition: color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-left a:hover {
-  color: #e0e0e0;
-  transform: translateY(-2px);
-}
-
-.nav-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 0 0 auto;
 }
 
 .logo-link {
@@ -69,52 +39,574 @@
 }
 
 .logo-img {
-  height: 100px;
+  height: 60px;
   width: auto;
   object-fit: contain;
-  padding: 0.5rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.nav-link.active {
+  color: #ffd700;
+}
+
+.nav-link:hover {
+  color: #ffd700;
 }
 
 .nav-right {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
-  flex: 1;
-  justify-content: flex-end;
+  flex: 0 0 auto;
 }
 
-.nav-link {
-  color: rgb(255, 255, 255);
+.social-icon {
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #ffd700;
+  transform: translateY(-2px);
+}
+
+/* Landing Page */
+.landing-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.landing-content {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.landing-title-image {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 0 1rem 0;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.cta-button {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.cta-button:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Landing Footer */
+.landing-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+}
+
+.landing-page .landing-footer {
+  position: absolute;
+}
+
+.us-five-forever-page .landing-footer,
+.about-page .landing-footer {
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  margin-top: 4rem;
+}
+
+.footer-copyright {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 500;
-  font-size: 1.2rem;
-  letter-spacing: 0.05em;
   transition: color 0.3s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-link:hover {
+  color: #ffd700;
+}
+
+/* US FIVE FOREVER Page */
+.us-five-forever-page {
+  width: 100%;
+  background: #000000;
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -80px;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hero-title-image {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 0 1rem 0;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.7));
+}
+
+.hero-download-button {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.hero-download-button:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Game Overview Section */
+.game-overview-section {
+  padding: 6rem 3rem;
+  background: #000000;
+  color: #ffffff;
+}
+
+.overview-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.game-cover-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-cover-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.steam-availability {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.available-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.steam-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.steam-logo-container:hover {
+  opacity: 0.8;
+}
+
+.steam-logo-image {
+  width: 30%;
+  height: 20%;
+  object-fit: contain;
+  margin: 0;
+  padding: 2%;
+  display: block;
+  line-height: 0;
+}
+
+.overview-content .game-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.features-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.features-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.features-list li {
+  font-size: 1rem;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  padding-left: 1.5rem;
   position: relative;
 }
 
-.nav-link::after {
-  content: '';
+.features-list li::before {
+  content: '•';
   position: absolute;
-  bottom: -5px;
   left: 0;
-  width: 0;
-  height: 2px;
-  background: #ff9de0;
-  transition: width 0.3s ease;
+  color: #ffd700;
+  font-size: 1.5rem;
 }
 
-.nav-link:hover {
-  color: #ff9de0;
+/* Episode Section */
+.episode-section {
+  position: relative;
+  padding: 2rem 0;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
 }
 
-.nav-link:hover::after {
+.episode-background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.episode-background-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.episode-container {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  width: 800px;
+  margin: 0;
+  padding: 1rem 2rem;
+  align-self: flex-start;
+}
+
+.episode-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
+  padding: 3rem 2.5rem;
+  text-align: left;
+}
+
+.episode-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+}
+
+.episode-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.episode-description p {
+  margin: 0;
+}
+
+/* Trailer Section */
+.trailer-section {
+  padding: 4rem 3rem;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.trailer-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.video-placeholder {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  background: #2a2a2a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.play-icon {
+  width: 80px;
+  height: 80px;
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+/* Screenshots Section */
+.screenshots-section {
+  padding: 6rem 3rem;
+  background: #000000;
+  color: #ffffff;
+}
+
+.screenshots-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 3rem 0;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.screenshots-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.screenshot-item {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #2a2a2a;
+}
+
+.screenshot-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 /* Main Content */
 .main-content {
-  margin-top: 100px;
   padding: 4rem 2rem;
   max-width: 1200px;
   margin-left: auto;
@@ -204,55 +696,110 @@
 
 /* About Page */
 .about-page {
-  display: flex;
-  position: relative;
-  padding: 0;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  padding-top: 100px;
+  min-height: 100vh;
 }
 
 .about-content {
-  flex: 1;
-  padding: 4rem 2rem;
   max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 4rem 3rem;
 }
 
 .about-intro {
-  padding: 4rem 2rem;
   text-align: center;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 .about-intro h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  color: #333333;
-  margin: 0 0 1.5rem 0;
+  color: #ffffff;
+  margin: 0 0 2rem 0;
   letter-spacing: 0.1em;
+  font-family: 'Arial', sans-serif;
 }
 
 .about-intro p {
-  font-size: 1.2rem;
-  color: #666666;
+  font-size: 1.1rem;
+  color: #ffffff;
   line-height: 1.8;
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Our Team Section */
+.our-team-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.our-team-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 3rem 0;
+  letter-spacing: 0.1em;
+  font-family: 'Arial', sans-serif;
+}
+
+.department-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.department-button {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.department-button:hover {
+  background: #ffd700;
+  color: #000000;
+}
+
+/* Team Members Section */
+.team-members-section {
+  margin-top: 4rem;
+  scroll-margin-top: 100px;
+}
+
+.team-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 3rem 0;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Team Side Menu */
 .team-side-menu {
   position: fixed;
-  left: 0;
+  right: 0;
   top: 120px;
   width: 60px;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-radius: 0 12px 12px 0;
+  border-right: none;
+  border-radius: 12px 0 0 12px;
   z-index: 100;
   transition: width 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -280,10 +827,6 @@
   min-height: 35px;
 }
 
-.side-menu-item:hover {
-  background-color: rgba(250, 242, 161, 0.2);
-}
-
 .menu-line {
   width: 25px;
   height: 2.5px;
@@ -300,20 +843,6 @@
   letter-spacing: 0.05em;
 }
 
-/* Team Sections */
-.team-section {
-  margin-bottom: 6rem;
-  scroll-margin-top: 120px;
-}
-
-.team-section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333333;
-  margin: 0 0 3rem 0;
-  letter-spacing: 0.1em;
-  text-align: center;
-}
 
 .team-members-grid {
   display: grid;
@@ -336,13 +865,13 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  border: 3px solid rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.member-image-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.member-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #2a2a2a;
+  border-radius: 50%;
 }
 
 .member-image {
@@ -352,44 +881,69 @@
 }
 
 .member-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333333;
-  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+  font-family: 'Arial', sans-serif;
 }
 
 .member-role {
   font-size: 1rem;
-  color: #666666;
-  margin: 0;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+  font-family: 'Arial', sans-serif;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem 1.5rem;
-    height: 70px;
-  }
-
-  .nav-left {
-    gap: 1rem;
-  }
-
-  .nav-left svg {
-    width: 20px;
-    height: 20px;
+    flex-wrap: wrap;
   }
 
   .logo-img {
-    height: 60px;
+    height: 30px;
   }
 
   .nav-right {
     gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-right svg {
+    width: 20px;
+    height: 20px;
   }
 
   .nav-link {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .landing-title-image {
+    max-width: 280px;
+  }
+
+  .landing-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .landing-footer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
   }
 
   .main-content {
@@ -416,7 +970,7 @@
   .team-side-menu {
     width: 50px;
     top: 90px;
-    left: 0;
+    right: 0;
   }
 
   .team-side-menu:hover {
@@ -438,8 +992,12 @@
     height: 150px;
   }
 
-  .about-intro {
+  .about-content {
     padding: 3rem 1.5rem;
+  }
+
+  .about-intro {
+    margin-bottom: 4rem;
   }
 
   .about-intro h2 {
@@ -449,26 +1007,107 @@
   .about-intro p {
     font-size: 1rem;
   }
+
+  .our-team-heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .department-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .department-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .team-section-title {
+    font-size: 2rem;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.5rem;
+  }
+
+  /* US FIVE FOREVER Responsive */
+  .game-overview-section,
+  .episode-section,
+  .trailer-section,
+  .screenshots-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .overview-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .episode-section {
+    min-height: 60vh;
+    padding: 3rem 1.5rem;
+  }
+
+  .episode-content {
+    padding: 2rem;
+  }
+
+  .episode-heading,
+  .trailer-heading,
+  .screenshots-heading {
+    font-size: 2rem;
+  }
+
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .hero-title-image {
+    max-width: 280px;
+  }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    flex-direction: column;
-    height: auto;
     padding: 1rem;
-    gap: 0.5rem;
-  }
-
-  .nav-left,
-  .nav-center,
-  .nav-right {
-    flex: none;
-    width: 100%;
-    justify-content: center;
   }
 
   .nav-right {
-    gap: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+  }
+
+  .landing-title-image {
+    max-width: 220px;
+  }
+
+  .landing-content {
+    bottom: 2%;
+    padding: 1rem;
+  }
+
+  .landing-footer {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
   }
 
   .main-content {
@@ -478,7 +1117,7 @@
   .team-side-menu {
     width: 45px;
     top: 120px;
-    left: 0;
+    right: 0;
   }
 
   .team-side-menu:hover {
@@ -506,5 +1145,86 @@
 
   .member-role {
     font-size: 0.9rem;
+  }
+
+  /* US FIVE FOREVER Mobile */
+  .game-overview-section,
+  .episode-section,
+  .trailer-section,
+  .screenshots-section {
+    padding: 2rem 1rem;
+  }
+
+  .episode-section {
+    min-height: 50vh;
+  }
+
+  .episode-content {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .episode-heading,
+  .trailer-heading,
+  .screenshots-heading {
+    font-size: 1.5rem;
+  }
+
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title-image {
+    max-width: 220px;
+  }
+
+  .steam-text {
+    font-size: 1.5rem;
+  }
+
+  .game-description,
+  .episode-description {
+    font-size: 1rem;
+  }
+
+  /* About Page Mobile */
+  .about-content {
+    padding: 2rem 1rem;
+  }
+
+  .about-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-intro p {
+    font-size: 0.9rem;
+  }
+
+  .our-team-heading {
+    font-size: 1.5rem;
+  }
+
+  .department-buttons {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .department-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .team-section-title {
+    font-size: 1.5rem;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .member-image-container {
+    width: 120px;
+    height: 120px;
   }
 }

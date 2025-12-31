@@ -1,34 +1,28 @@
+import { Link } from 'react-router-dom'
 import '../App.css'
-import ex3Image from '../assets/img/ex3.png'
+import groupImage from '../assets/img/group.png'
+import logoImage from '../assets/img/logo.png'
 
 function Home() {
-  // Sample game data - replace with your actual games
-  const games = [
-    {
-      id: 1,
-      title: "Us Five Forever",
-      image: ex3Image
-    },
-    {
-      id: 2,
-      title: "Game Title 2",
-      image: "https://via.placeholder.com/800x600/2d3748/ffffff?text=Game+2",
-      description: "A puzzle game that challenges your mind and creativity."
-    }
-  ]
-
   return (
-    <main className="main-content">
-      <section id="games" className="games-gallery">
-        {games.map((game) => (
-          <div key={game.id} className="game-card">
-            <div className="game-image-container">
-              <img src={game.image} alt={game.title} className="game-image" />
-              <h2 className="game-title">{game.title}</h2>
-            </div>
-          </div>
-        ))}
-      </section>
+    <main className="landing-page">
+      <div className="landing-background">
+        <img src={groupImage} alt="Us Five Forever" className="background-image" />
+      </div>
+      <div className="landing-content">
+        <img src={logoImage} alt="US FIVE FOREVER" className="landing-title-image" />
+        <div className="landing-buttons">
+          <Link to="/us-five-forever" className="cta-button">LEARN MORE</Link>
+          <a href="https://store.steampowered.com/app/4125820/Us_Five_Forever/" target="_blank" rel="noopener noreferrer" className="cta-button">DOWNLOAD NOW</a>
+        </div>
+      </div>
+      <footer className="landing-footer">
+        <p className="footer-copyright">© Sunday Studios, 2025</p>
+        <div className="footer-links">
+          <Link to="/" className="footer-link">Home</Link>
+          <Link to="/about" className="footer-link">About</Link>
+        </div>
+      </footer>
     </main>
   )
 }
