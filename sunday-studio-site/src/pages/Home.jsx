@@ -18,10 +18,6 @@ function Home() {
       </div>
       <footer className="landing-footer">
         <p className="footer-copyright">© Sunday Studios, 2025</p>
-        <div className="footer-links">
-          <Link to="/" className="footer-link">Home</Link>
-          <Link to="/about" className="footer-link">About</Link>
-        </div>
       </footer>
     </main>
   )
