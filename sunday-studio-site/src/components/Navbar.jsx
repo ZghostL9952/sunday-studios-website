@@ -8,6 +8,7 @@ function Navbar() {
   const isHome = location.pathname === '/'
   const isUsFiveForever = location.pathname === '/us-five-forever'
   const isAbout = location.pathname === '/about'
+  const isApply = location.pathname === '/apply'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isGamesOpen, setIsGamesOpen] = useState(false)
   const dropdownRef = useRef(null)
@@ -72,18 +73,15 @@ useEffect(() => {
             <img src={logoWhite} alt="Sunday Studios" className="logo-img" />
           </button>
 
-          {!isGamesOpen && (
-            <Link to="/apply" className="nav-link nav-join">
-              WORK WITH US
-            </Link>
-          )}
-
         </div>
 
         <div className="nav-right">
           <Link to="/" className={`nav-link ${isHome ? 'active' : ''}`}>HOME</Link>
           <Link to="/us-five-forever" className={`nav-link ${isUsFiveForever ? 'active' : ''}`}>US FIVE FOREVER</Link>
           <Link to="/about" className={`nav-link ${isAbout ? 'active' : ''}`}>ABOUT</Link>
+          <Link to="/apply" className={`nav-link ${isApply ? 'active' : ''}`}>
+              WORK WITH US
+            </Link>
 
           <a href="https://www.instagram.com/sundaystudiosgames/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
