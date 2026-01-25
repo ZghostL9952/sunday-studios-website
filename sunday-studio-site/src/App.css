@@ -1543,3 +1543,240 @@
 
 
 
+/* ===== Characters Modal ===== */
+
+.characters-cta-section {
+  padding: 2.5rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.characters-cta-button {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.characters-cta-button:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+.characters-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.characters-modal {
+  width: min(1000px, 94vw);
+  max-height: 85vh;
+  background: rgba(15, 15, 15, 0.96);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.characters-modal-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.characters-modal-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.characters-modal-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.characters-modal-body {
+  padding: 1.5rem;
+}
+
+.characters-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 1fr);
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.character-slide {
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.character-image-wrap {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.character-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-meta {
+  padding: 1rem;
+}
+
+.character-name {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.character-va {
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.character-desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ===== Focused Character Slider (Arrows) ===== */
+
+.characters-slider {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slider-arrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-arrow:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.character-focus {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.character-focus-image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.character-focus-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-focus-meta {
+  padding: 1.1rem 1.2rem 1.25rem;
+}
+
+.character-focus-name {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.35rem;
+  letter-spacing: 0.05em;
+}
+
+.character-focus-va {
+  margin: 0.35rem 0 0.65rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+}
+
+.character-focus-desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.slider-dots {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.slider-dot.active {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.15);
+}
+
+/* Mobile: make arrows smaller */
+@media (max-width: 768px) {
+  .characters-slider {
+    grid-template-columns: 44px 1fr 44px;
+  }
+
+  .slider-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+  }
+
+  .character-focus-name {
+    font-size: 1.2rem;
+  }
+}
+
+
