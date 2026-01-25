@@ -5,8 +5,60 @@ import logoImage from '../assets/img/logo.png'
 import gameCoverImage from '../assets/img/game_cover.png'
 import libraryHeroImage from '../assets/img/libraryhero.png'
 import steamLogo from '../assets/img/steam.png'
+import oliviaChar from '../assets/img/olivia.png'
+import kyleChar from '../assets/img/kyle.png'
+import rowanChar from '../assets/img/rowan.png'
+import samChar from '../assets/img/sam.png'
+import noraChar from '../assets/img/nora.png'
+import { useState, useMemo } from "react";
 
 function UsFiveForever() {
+
+const [charactersOpen, setCharactersOpen] = useState(false);
+const [activeIndex, setActiveIndex] = useState(0);
+const characters = useMemo(
+  () => [
+    {
+      id: "olivia",
+      name: "Olivia Herrera",
+      va: "Ariana Rosario",
+      description:
+        "A one-track mind, hungry to solve a mystery. Olivia's desire to get answers stops at nothing even if it takes stepping on those around her to get what she needs.",
+      image: oliviaChar,
+    },
+    {
+      id: "char2",
+      name: "Kyle",
+      va: "Geno c. Jones",
+      description: "Easygoing and bright, with the energy of a golden retriever, Kyle was a central presence in the friend group until he want missing freshman year.",
+      image: kyleChar,
+    },
+    {
+      id: "char3",
+      name: "Rowan",
+      va: "Wes Haas",
+      description: "Originally an engineering major, Rowan realized they weren't happy and switched to theater instead. They're trying to keep everyone together for a good time at this party.",
+      image: rowanChar,
+    },
+    {
+      id: "char4",
+      name: "Sam",
+      va: "Wonseok Lee",
+      description: "A hard and heavily tatted exterior helps Sam avoid unwanted social interactions. If you get to know him, though, he'll be one of the most loyal friends you'll ever meet.",
+      image: samChar,
+    },
+    {
+      id: "char5",
+      name: "Nora",
+      va: "Tasmin Singh",
+      description: "Nora is a driven, but overly cautios architecture major and Olivia's childhood friend. She had to miss a year of college after her accident, but is back and determined to make up for lost time.",
+      image: noraChar,
+    },
+  ],
+  []
+);
+
+
   return (
     <main className="us-five-forever-page">
       {/* Hero Section */}
@@ -71,9 +123,21 @@ function UsFiveForever() {
         </div>
       </section>
 
+
+      {/* Get To Know The Characters */}
+      <section className="characters-cta-section">
+        <button
+          className="characters-cta-button"
+          onClick={() => { setActiveIndex(0); setCharactersOpen(true); }}
+        >
+          GET TO KNOW THE CHARACTERS
+        </button>
+      </section>
+
+
       {/* Game Trailer Section */}
       <section className="trailer-section">
-        <h2 className="trailer-heading">GAME TRAILOR</h2>
+        <h2 className="trailer-heading">GAME TRAILER</h2>
         <div className="video-placeholder">
           <div className="video-placeholder-content">
             <svg className="play-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -113,6 +177,85 @@ function UsFiveForever() {
           Back to top
         </button>
       </footer>
+
+
+
+
+
+      {charactersOpen && (
+        <div
+          className="characters-modal-backdrop"
+          onClick={() => setCharactersOpen(false)}
+        >
+          <div
+            className="characters-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="characters-modal-header">
+              <h3 className="characters-modal-title">GET TO KNOW THE CHARACTERS</h3>
+              <button
+                className="characters-modal-close"
+                onClick={() => setCharactersOpen(false)}
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="characters-slider">
+            <button
+              className="slider-arrow left"
+              onClick={() => setActiveIndex((prev) => (prev - 1 + characters.length) % characters.length)}
+              aria-label="Previous character"
+              type="button"
+            >
+              ‹
+            </button>
+
+            <div className="character-focus">
+              <div className="character-focus-image-wrap">
+                <img
+                  src={characters[activeIndex].image}
+                  alt={characters[activeIndex].name}
+                  className="character-focus-image"
+                />
+              </div>
+
+              <div className="character-focus-meta">
+                <h4 className="character-focus-name">{characters[activeIndex].name}</h4>
+                <p className="character-focus-va">VA: {characters[activeIndex].va}</p>
+                <p className="character-focus-desc">{characters[activeIndex].description}</p>
+              </div>
+            </div>
+
+            <button
+              className="slider-arrow right"
+              onClick={() => setActiveIndex((prev) => (prev + 1) % characters.length)}
+              aria-label="Next character"
+              type="button"
+            >
+              ›
+            </button>
+          </div>
+
+          <div className="slider-dots" aria-label="Character selection">
+            {characters.map((c, i) => (
+              <button
+                key={c.id}
+                className={`slider-dot ${i === activeIndex ? "active" : ""}`}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Go to ${c.name}`}
+                type="button"
+              />
+            ))}
+          </div>
+          </div>
+        </div>
+      )}
+
+
+
+
+
     </main>
   )
 }
