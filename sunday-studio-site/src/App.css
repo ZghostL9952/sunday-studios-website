@@ -1784,4 +1784,194 @@
   }
 }
 
+/* ===== HOME PAGE (hero + scroll sections) ===== */
+
+.home-page {
+  width: 100%;
+  background: #000000;
+}
+
+/* make the old landing layout behave like a hero section */
+.landing-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+}
+
+/* ensure footer stays pinned to bottom of hero only */
+.landing-hero .landing-footer {
+  position: absolute;
+}
+
+/* scroll target spacing (helps if you have a fixed navbar) */
+.home-learn-more {
+  scroll-margin-top: 100px;
+}
+
+/* ===== Characters Grid (ALL VISIBLE, NO CLICKING) ===== */
+
+.characters-grid-section {
+  padding: 4rem 3rem 6rem;
+  background: #000000;
+  color: #ffffff;
+}
+
+.characters-grid-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Bigger cards so text on art is readable */
+.characters-grid {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+.character-card {
+  background: transparent;
+  border: none;
+  text-align: center;
+  padding: 0;
+  color: inherit;
+}
+
+/* No forced height = no black bars */
+.character-card-image-wrap {
+  width: 100%;
+  border-radius: 12px;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Show full poster, no crop */
+.character-card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Meta */
+.character-card-meta {
+  margin-top: 1rem;
+}
+
+.character-card-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.character-card-va {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.character-card-desc {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .characters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .characters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .characters-grid-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .character-card-desc {
+    font-size: 0.9rem;
+  }
+}
+
+/* Learn more arrow indicator */
+.cta-learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.learn-more-arrow {
+  display: inline-block;
+  font-size: 1.15em;
+  line-height: 1;
+  transform: translateY(-1px);
+  animation: learnMoreBounce 1.2s ease-in-out infinite;
+}
+
+@keyframes learnMoreBounce {
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(4px); }
+}
+
+/* Optional: stop animation on hover so it feels crisp */
+.cta-learn-more:hover .learn-more-arrow {
+  animation-play-state: paused;
+}
+
+
+/* Home "Next step" block after trailer */
+.home-next-step {
+  padding: 3rem 3rem 5rem;
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+}
+
+.home-next-step-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+}
+
+.home-next-step-text {
+  margin: 0 auto 1.75rem auto;
+  max-width: 820px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Arial', sans-serif;
+}
+
+.home-next-step-actions {
+  display: flex;
+  justify-content: center;
+}
+
+
+
 
