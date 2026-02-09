@@ -17,6 +17,7 @@ import imgIsaiah from '../assets/img/Isaiah Hogue.jpeg'
 import imgIvy from '../assets/img/Ivy Immediato.png'
 import imgJack from '../assets/img/Jack Goulden.JPG'
 import imgJamari from '../assets/img/Jamari Miller.jpg'
+import imgJonas from '../assets/img/Jonas Ma.jpg'
 import imgJoey from '../assets/img/Joey Matsumoto.jpeg'
 import imgJoshua from '../assets/img/Joshua Villanueva.JPG'
 import imgKaley from '../assets/img/Kaley Akemann.jpeg'
@@ -47,6 +48,7 @@ const NAME_TO_IMAGE = {
   'Ivy Immediato': imgIvy,
   'Jack Goulden': imgJack,
   'Jamari Miller': imgJamari,
+  'Jonas Ma': imgJonas,
   'Joey Matsumoto': imgJoey,
   'Josh Villanueva': imgJoshua,
   'Kaley Akemann': imgKaley,

@@ -11,6 +11,7 @@ function Navbar() {
   const isApply = location.pathname === '/apply'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isGamesOpen, setIsGamesOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const dropdownRef = useRef(null)
   const logoButtonRef = useRef(null)
 
@@ -26,7 +27,7 @@ function Navbar() {
 
 
 useEffect(() => {
-  if (isGamesOpen) {
+  if (isGamesOpen || isMobileMenuOpen) {
     document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = ''
@@ -35,36 +36,35 @@ useEffect(() => {
   return () => {
     document.body.style.overflow = ''
   }
-}, [isGamesOpen])
+}, [isGamesOpen, isMobileMenuOpen])
 
 
   useEffect(() => {
     setIsGamesOpen(false)
+    setIsMobileMenuOpen(false)
   }, [location.pathname])
 
 
 
   useEffect(() => {
-  const onKeyDown = (e) => {
-    if (!isGamesOpen) return
-    if (e.key === 'Escape') setIsGamesOpen(false)
-  }
-
-  document.addEventListener('keydown', onKeyDown)
-  return () => {
-    document.removeEventListener('keydown', onKeyDown)
-  }
-}, [isGamesOpen])
+    const onKeyDown = (e) => {
+      if (e.key !== 'Escape') return
+      if (isGamesOpen) setIsGamesOpen(false)
+      if (isMobileMenuOpen) setIsMobileMenuOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isGamesOpen, isMobileMenuOpen])
 
 
   return (
     <>
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isGamesOpen ? 'menu-open' : ''}`}>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isGamesOpen ? 'menu-open' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
         <div className="nav-left">
           <button
             ref={logoButtonRef}
             type="button"
-            className="logo-link logo-button"
+            className="logo-link logo-button logo-button-desktop"
             aria-haspopup="dialog"
             aria-expanded={isGamesOpen}
             aria-controls="games-dropdown"
@@ -72,7 +72,9 @@ useEffect(() => {
           >
             <img src={logoWhite} alt="Sunday Studios" className="logo-img" />
           </button>
-
+          <Link to="/" className="logo-link logo-button-mobile" aria-label="Sunday Studios Home">
+            <img src={logoWhite} alt="Sunday Studios" className="logo-img" />
+          </Link>
         </div>
 
         <div className="nav-right">
@@ -109,6 +111,18 @@ useEffect(() => {
             </svg>
           </a>
         </div>
+
+        <button
+          type="button"
+          className="nav-hamburger"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
       </nav>
 
       <div
@@ -142,15 +156,30 @@ useEffect(() => {
         </div>
       </div>
 
-      {isGamesOpen && (
-  <button
-    type="button"
-    className="games-backdrop"
-    aria-label="Close games menu"
-    onClick={() => setIsGamesOpen(false)}
-  />
-)}
+      {(isGamesOpen || isMobileMenuOpen) && (
+        <button
+          type="button"
+          className="games-backdrop"
+          aria-label="Close menu"
+          onClick={() => { setIsGamesOpen(false); setIsMobileMenuOpen(false) }}
+        />
+      )}
 
+      {/* Mobile dropdown menu */}
+      <div className={`nav-mobile-dropdown ${isMobileMenuOpen ? 'open' : ''}`} aria-hidden={!isMobileMenuOpen}>
+        <div className="nav-mobile-dropdown-inner">
+          <Link to="/" className="nav-mobile-link" onClick={() => setIsMobileMenuOpen(false)}>HOME</Link>
+          <Link to="/us-five-forever" className="nav-mobile-link" onClick={() => setIsMobileMenuOpen(false)}>US FIVE FOREVER</Link>
+          <Link to="/about" className="nav-mobile-link" onClick={() => setIsMobileMenuOpen(false)}>ABOUT</Link>
+          <Link to="/apply" className="nav-mobile-link" onClick={() => setIsMobileMenuOpen(false)}>WORK WITH US</Link>
+          <div className="nav-mobile-socials">
+            <a href="https://www.instagram.com/sundaystudiosgames/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon">Instagram</a>
+            <a href="https://www.linkedin.com/company/sunday-studios-games/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon">LinkedIn</a>
+            <a href="https://discord.gg/WqhGAnZWCq" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="social-icon">Discord</a>
+            <a href="https://www.tiktok.com/@sundaystudios__" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="social-icon">TikTok</a>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
