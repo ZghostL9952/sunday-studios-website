@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 import groupImage from "../assets/img/homePic.png";
 import logoImage from "../assets/img/logo.png";
@@ -112,9 +113,9 @@ function Home() {
           </p>
 
           <div className="home-next-step-actions">
-            <a href="/us-five-forever" className="cta-button">
+            <Link to="/us-five-forever" className="cta-button">
               VIEW EPISODE 1 + SCREENSHOTS →
-            </a>
+            </Link>
           </div>
         </section>
 

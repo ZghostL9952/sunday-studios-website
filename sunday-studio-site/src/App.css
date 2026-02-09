@@ -735,21 +735,26 @@
   font-size: 1.5rem;
 }
 
-/* Episode Section - image banner first, then text */
+/* Episode Section - Desktop: text on top of background banner; Mobile: banner then text */
 .episode-section {
   position: relative;
   padding: 2rem 0;
+  min-height: 50vh;
   background: #000000;
   color: #ffffff;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  align-items: center;
+  justify-content: flex-start;
   overflow: visible;
 }
 
 .episode-background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  order: 1;
+  height: 100%;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -757,20 +762,22 @@
 }
 
 .episode-background-image {
-  width: 100%;
-  max-width: 100%;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   object-position: center;
-  display: block;
 }
 
 .episode-container {
-  order: 2;
+  position: relative;
+  z-index: 1;
   max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  width: 800px;
+  margin: 0;
+  padding: 1rem 2rem;
+  align-self: flex-start;
   box-sizing: border-box;
 }
 
@@ -898,6 +905,14 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+.screenshot-item-clickable {
+  cursor: pointer;
+}
+
+.screenshot-item-clickable:hover .screenshot-image {
+  transform: scale(1.03);
 }
 
 /* Main Content */
@@ -1176,18 +1191,26 @@
 }
 
 .member-name {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #ffffff;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.35rem 0;
   font-family: 'Arial', sans-serif;
 }
 
 .member-role {
-  font-size: 1rem;
-  color: #ffffff;
-  margin: 0 0 0.25rem 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
   font-family: 'Arial', sans-serif;
+}
+
+.member-role-line {
+  display: block;
+}
+
+.member-role-line + .member-role-line {
+  margin-top: 0.15rem;
 }
 
 /* Responsive Design */
@@ -1355,11 +1378,34 @@
     gap: 2rem;
   }
 
+  /* Episode: mobile = banner first, then text (stacked) */
   .episode-section {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
     padding: 2rem 1rem 3rem;
   }
 
+  .episode-background {
+    position: relative;
+    width: 100%;
+    height: auto;
+    order: 1;
+  }
+
+  .episode-background-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
   .episode-container {
+    position: relative;
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 1.5rem 1rem;
   }
 
@@ -1929,6 +1975,7 @@
   padding: 4rem 3rem 6rem;
   background: #000000;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 .characters-grid-heading {
@@ -1941,12 +1988,12 @@
   letter-spacing: 0.1em;
 }
 
-/* Bigger cards so text on art is readable */
+/* Desktop: 3 per row, wrap to next row; no horizontal scroll */
 .characters-grid {
   max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(5, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
 }
 
@@ -1974,6 +2021,15 @@
   object-fit: contain;
 }
 
+.character-card-image-wrap-clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.character-card-image-wrap-clickable:hover {
+  opacity: 0.92;
+}
+
 /* Meta */
 .character-card-meta {
   margin-top: 1rem;
@@ -1999,16 +2055,14 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-  .characters-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+/* Responsive: 2 columns on smaller screens */
 @media (max-width: 720px) {
   .characters-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .screenshots-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2017,9 +2071,60 @@
     padding: 3rem 1.5rem;
   }
 
+  .characters-grid {
+    grid-template-columns: 1fr;
+  }
+
   .character-card-desc {
     font-size: 0.9rem;
   }
+}
+
+/* ===== Image Lightbox (screenshots + character cards) ===== */
+.image-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.image-lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* Learn more arrow indicator */

@@ -10,9 +10,25 @@ import rowanChar from "../assets/img/rowan.png";
 import samChar from "../assets/img/sam.png";
 import noraChar from "../assets/img/nora.png";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 function UsFiveForever() {
+  const [lightbox, setLightbox] = useState(null); // { src, alt }
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape" && lightbox) setLightbox(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [lightbox]);
+
+  useEffect(() => {
+    if (lightbox) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [lightbox]);
+
   const characters = useMemo(
     () => [
       {
@@ -125,24 +141,19 @@ function UsFiveForever() {
       <section className="screenshots-section">
         <h2 className="screenshots-heading">SCREENSHOTS</h2>
         <div className="screenshots-grid">
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 1" className="screenshot-image" />
-          </div>
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 2" className="screenshot-image" />
-          </div>
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 3" className="screenshot-image" />
-          </div>
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 4" className="screenshot-image" />
-          </div>
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 5" className="screenshot-image" />
-          </div>
-          <div className="screenshot-item">
-            <img src={gameCoverImage} alt="Screenshot 6" className="screenshot-image" />
-          </div>
+          {[1, 2, 3, 4, 5, 6].map((n) => (
+            <div
+              key={n}
+              className="screenshot-item screenshot-item-clickable"
+              onClick={() => setLightbox({ src: gameCoverImage, alt: `Screenshot ${n}` })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: gameCoverImage, alt: `Screenshot ${n}` })}
+              aria-label={`View screenshot ${n} full size`}
+            >
+              <img src={gameCoverImage} alt={`Screenshot ${n}`} className="screenshot-image" />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -153,7 +164,14 @@ function UsFiveForever() {
         <div className="characters-grid">
           {characters.map((character) => (
             <div key={character.id} className="character-card">
-              <div className="character-card-image-wrap">
+              <div
+                className="character-card-image-wrap character-card-image-wrap-clickable"
+                onClick={() => setLightbox({ src: character.image, alt: character.name })}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: character.image, alt: character.name })}
+                aria-label={`View ${character.name} full size`}
+              >
                 <img
                   src={character.image}
                   alt={character.name}
@@ -170,6 +188,34 @@ function UsFiveForever() {
           ))}
         </div>
       </section>
+
+      {/* Image lightbox (screenshots + character cards) */}
+      {lightbox && (
+        <div
+          className="image-lightbox-backdrop"
+          onClick={() => setLightbox(null)}
+          onKeyDown={(e) => e.key === "Enter" && setLightbox(null)}
+          role="button"
+          tabIndex={0}
+          aria-label="Close full size image"
+        >
+          <button
+            type="button"
+            className="image-lightbox-close"
+            onClick={(e) => { e.stopPropagation(); setLightbox(null); }}
+            aria-label="Close"
+          >
+            ×
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            className="image-lightbox-image"
+            onClick={(e) => e.stopPropagation()}
+            draggable={false}
+          />
+        </div>
+      )}
 
       <footer className="landing-footer">
         <p className="footer-copyright">© Sunday Studios, 2025</p>

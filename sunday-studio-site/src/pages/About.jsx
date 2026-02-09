@@ -142,7 +142,11 @@ function About() {
                     )}
                   </div>
                   <p className="member-name">{member.name}</p>
-                  <p className="member-role">{member.role}</p>
+                  <div className="member-role">
+                    {member.role.split(', ').map((part, i) => (
+                      <span key={i} className="member-role-line">{part}</span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
