@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://www.sundaystudiosgames.com",
+  "homepage": "https://sundaystudiosgames.com",
   "scripts": {
-    "dev": "vite",
+    "dev": "cp index.dev.html index.html && vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build && cp docs/index.html docs/404.html",
+    "predeploy": "npm run build && cp dist/index.dev.html index.html && cp index.html 404.html && cp -r dist/assets . && cp dist/vite.svg .",
     "deploy": "npm run predeploy"
   },
   "dependencies": {
