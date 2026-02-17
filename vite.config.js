@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react"
 
 export default defineConfig({
   plugins: [react()],
-  base: "/sunday-studios-website",
+  base: "/sunday-studios-website/",
 })
