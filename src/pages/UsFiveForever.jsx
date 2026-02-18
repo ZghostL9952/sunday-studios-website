@@ -10,6 +10,14 @@ import rowanChar from "../assets/img/rowan.png";
 import samChar from "../assets/img/sam.png";
 import noraChar from "../assets/img/nora.png";
 
+import GameSS1 from "../assets/GameSS1.png";
+import GameSS2 from "../assets/GameSS2.png";
+import GameSS3 from "../assets/GameSS3.png";
+import GameSS4 from "../assets/GameSS4.png";
+import GameSS5 from "../assets/GameSS5.png";
+import GameSS6 from "../assets/GameSS6.png";
+
+
 import { useMemo, useState, useEffect } from "react";
 
 function UsFiveForever() {
@@ -137,25 +145,35 @@ function UsFiveForever() {
         </div>
       </section>
 
-      {/* Screenshots Section */}
-      <section className="screenshots-section">
-        <h2 className="screenshots-heading">SCREENSHOTS</h2>
-        <div className="screenshots-grid">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div
-              key={n}
-              className="screenshot-item screenshot-item-clickable"
-              onClick={() => setLightbox({ src: gameCoverImage, alt: `Screenshot ${n}` })}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: gameCoverImage, alt: `Screenshot ${n}` })}
-              aria-label={`View screenshot ${n} full size`}
-            >
-              <img src={gameCoverImage} alt={`Screenshot ${n}`} className="screenshot-image" />
-            </div>
-          ))}
-        </div>
-      </section>
+    {/* Screenshots Section */}
+    <section className="screenshots-section">
+      <h2 className="screenshots-heading">SCREENSHOTS</h2>
+
+      <div className="screenshots-grid">
+        {[GameSS1, GameSS2, GameSS3, GameSS4, GameSS5, GameSS6].map((img, index) => (
+          <div
+            key={index}
+            className="screenshot-item screenshot-item-clickable"
+            onClick={() => setLightbox({ src: img, alt: `Screenshot ${index + 1}` })}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) =>
+              e.key === "Enter" && setLightbox({ src: img, alt: `Screenshot ${index + 1}` })
+            }
+            aria-label={`View screenshot ${index + 1} full size`}
+          >
+            <img
+              src={img}
+              alt={`Screenshot ${index + 1}`}
+              className="screenshot-image"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
+
 
       {/* Characters Grid Section (ALL VISIBLE, NO CLICKING) */}
       <section className="characters-grid-section">
