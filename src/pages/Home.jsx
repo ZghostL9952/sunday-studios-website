@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import groupImage from "../assets/img/Homepic.png";
-import logoImage from "../assets/img/logo.png";
+import groupImage from "@/assets/Homepic.png";
+import logoImage from "@/assets/logo.png";
 
-import gameCoverImage from "../assets/img/game_cover.png";
-import steamLogo from "../assets/img/steam.png";
-import trailerVideo from "../assets/UFF trailer long.mp4";
+import gameCoverImage from "@/assets/game_cover.png";
+import steamLogo from "@/assets/steam.png";
+import trailerVideo from "@/assets/UFF trailer long.mp4";
 
 function Home() {
   const learnMoreRef = useRef(null);
@@ -97,18 +97,20 @@ function Home() {
         <section className="trailer-section">
           <h2 className="trailer-heading">GAME TRAILER</h2>
 
-          <video
-            className="trailer-video"
-            src={trailerVideo}
-            controls
-            controlsList="nodownload"
-            playsInline
-            preload="metadata"
-            onContextMenu={(e) => e.preventDefault()}
-            aria-label="Us Five Forever game trailer"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <div className="trailer-video-box">
+            <video
+              className="trailer-video"
+              src={trailerVideo}
+              controls
+              controlsList="nodownload"
+              playsInline
+              preload="metadata"
+              onContextMenu={(e) => e.preventDefault()}
+              aria-label="Us Five Forever game trailer"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </section>
 
         {/* Next Step CTA */}
@@ -125,7 +127,16 @@ function Home() {
           </div>
         </section>
 
-
+        {/* Page footer */}
+        <footer className="landing-footer">
+          <p className="footer-copyright">© Sunday Studios, 2025</p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="footer-back-to-top"
+          >
+            Back to top
+          </button>
+        </footer>
       </div>
     </main>
   );

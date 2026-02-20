@@ -1,6 +1,6 @@
-import igIcon from "../assets/img/Social Icons.png";
-import discordIcon from "../assets/img/Social Icons-1.png";
-import bonfireImg from "../assets/img/Bonfire.png";
+import igIcon from "@/assets/Social Icons.png";
+import discordIcon from "@/assets/Social Icons-1.png";
+import bonfireImg from "@/assets/Bonfire.png";
 import '../App.css'
 
 function Apply() {

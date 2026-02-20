@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import '../App.css'
-import logoWhite from '../assets/img/sundaystudioswhitelogo_title.png'
+import logoWhite from '@/assets/sundaystudioswhitelogo_title.png'
 
 function Navbar() {
   const location = useLocation()

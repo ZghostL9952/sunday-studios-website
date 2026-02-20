@@ -1,22 +1,21 @@
 import "../App.css";
-import groupImage from "../assets/img/group.png";
-import logoImage from "../assets/img/logo.png";
-import libraryHeroImage from "../assets/img/libraryhero.png";
-import gameCoverImage from "../assets/img/game_cover.png"; // used in screenshots
+import groupImage from "@/assets/group.png";
+import logoImage from "@/assets/logo.png";
+import libraryHeroImage from "@/assets/libraryhero.png";
+import gameCoverImage from "@/assets/game_cover.png";
+import trailerVideo from "@/assets/UFF trailer long.mp4";
+import gameSS1 from "@/assets/GameSS1.png";
+import gameSS2 from "@/assets/GameSS2.png";
+import gameSS3 from "@/assets/GameSS3.png";
+import gameSS4 from "@/assets/GameSS4.png";
+import gameSS5 from "@/assets/GameSS5.png";
+import gameSS6 from "@/assets/GameSS6.png";
 
-import oliviaChar from "../assets/img/olivia.png";
-import kyleChar from "../assets/img/kyle.png";
-import rowanChar from "../assets/img/rowan.png";
-import samChar from "../assets/img/sam.png";
-import noraChar from "../assets/img/nora.png";
-
-import GameSS1 from "../assets/img/GameSS1.png";
-import GameSS2 from "../assets/img/GameSS2.png";
-import GameSS3 from "../assets/img/GameSS3.png";
-import GameSS4 from "../assets/img/GameSS4.png";
-import GameSS5 from "../assets/img/GameSS5.png";
-import GameSS6 from "../assets/img/GameSS6.png";
-
+import oliviaChar from "@/assets/olivia.png";
+import kyleChar from "@/assets/kyle-BsgX-FGm.png";
+import rowanChar from "@/assets/rowan.png";
+import samChar from "@/assets/sam.png";
+import noraChar from "@/assets/nora.png";
 
 import { useMemo, useState, useEffect } from "react";
 
@@ -145,35 +144,32 @@ function UsFiveForever() {
         </div>
       </section>
 
-    {/* Screenshots Section */}
-    <section className="screenshots-section">
-      <h2 className="screenshots-heading">SCREENSHOTS</h2>
-
-      <div className="screenshots-grid">
-        {[GameSS1, GameSS2, GameSS3, GameSS4, GameSS5, GameSS6].map((img, index) => (
-          <div
-            key={index}
-            className="screenshot-item screenshot-item-clickable"
-            onClick={() => setLightbox({ src: img, alt: `Screenshot ${index + 1}` })}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) =>
-              e.key === "Enter" && setLightbox({ src: img, alt: `Screenshot ${index + 1}` })
-            }
-            aria-label={`View screenshot ${index + 1} full size`}
-          >
-            <img
-              src={img}
-              alt={`Screenshot ${index + 1}`}
-              className="screenshot-image"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </div>
-    </section>
-
-
+      {/* Screenshots Section */}
+      <section className="screenshots-section">
+        <h2 className="screenshots-heading">SCREENSHOTS</h2>
+        <div className="screenshots-grid">
+          {[
+            { src: gameSS1, alt: "Us Five Forever screenshot 1" },
+            { src: gameSS2, alt: "Us Five Forever screenshot 2" },
+            { src: gameSS3, alt: "Us Five Forever screenshot 3" },
+            { src: gameSS4, alt: "Us Five Forever screenshot 4" },
+            { src: gameSS5, alt: "Us Five Forever screenshot 5" },
+            { src: gameSS6, alt: "Us Five Forever screenshot 6" },
+          ].map((shot, n) => (
+            <div
+              key={n}
+              className="screenshot-item screenshot-item-clickable"
+              onClick={() => setLightbox({ src: shot.src, alt: shot.alt })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: shot.src, alt: shot.alt })}
+              aria-label={`View screenshot ${n + 1} full size`}
+            >
+              <img src={shot.src} alt={shot.alt} className="screenshot-image" />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Characters Grid Section (ALL VISIBLE, NO CLICKING) */}
       <section className="characters-grid-section">
@@ -204,6 +200,25 @@ function UsFiveForever() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Game Trailer Section */}
+      <section className="trailer-section">
+        <h2 className="trailer-heading">GAME TRAILER</h2>
+        <div className="trailer-video-box">
+          <video
+            className="trailer-video"
+            src={trailerVideo}
+            controls
+            controlsList="nodownload"
+            playsInline
+            preload="metadata"
+            onContextMenu={(e) => e.preventDefault()}
+            aria-label="Us Five Forever game trailer"
+          >
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 

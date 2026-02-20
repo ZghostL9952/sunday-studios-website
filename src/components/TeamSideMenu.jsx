@@ -46,4 +46,3 @@ function TeamSideMenu() {
 }
 
 export default TeamSideMenu
-
