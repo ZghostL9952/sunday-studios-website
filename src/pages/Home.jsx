@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import groupImage from "../assets/img/homePic.png";
+import groupImage from "../assets/img/Homepic.png";
 import logoImage from "../assets/img/logo.png";
 
 import gameCoverImage from "../assets/img/game_cover.png";
