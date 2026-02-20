@@ -32,7 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sunday-studios-website/dist
+          path: sunday-studio-site/dist
 
       - name: Deploy
         id: deployment
