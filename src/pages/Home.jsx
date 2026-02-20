@@ -6,6 +6,7 @@ import logoImage from "../assets/img/logo.png";
 
 import gameCoverImage from "../assets/img/game_cover.png";
 import steamLogo from "../assets/img/steam.png";
+import trailerVideo from "../assets/UFF trailer long.mp4";
 
 function Home() {
   const learnMoreRef = useRef(null);
@@ -96,13 +97,18 @@ function Home() {
         <section className="trailer-section">
           <h2 className="trailer-heading">GAME TRAILER</h2>
 
-          <div className="video-placeholder">
-            <div className="video-placeholder-content">
-              <svg className="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
+          <video
+            className="trailer-video"
+            src={trailerVideo}
+            controls
+            controlsList="nodownload"
+            playsInline
+            preload="metadata"
+            onContextMenu={(e) => e.preventDefault()}
+            aria-label="Us Five Forever game trailer"
+          >
+            Your browser does not support the video tag.
+          </video>
         </section>
 
         {/* Next Step CTA */}

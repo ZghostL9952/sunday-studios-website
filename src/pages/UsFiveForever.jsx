@@ -10,12 +10,12 @@ import rowanChar from "../assets/img/rowan.png";
 import samChar from "../assets/img/sam.png";
 import noraChar from "../assets/img/nora.png";
 
-import GameSS1 from "../assets/GameSS1.png";
-import GameSS2 from "../assets/GameSS2.png";
-import GameSS3 from "../assets/GameSS3.png";
-import GameSS4 from "../assets/GameSS4.png";
-import GameSS5 from "../assets/GameSS5.png";
-import GameSS6 from "../assets/GameSS6.png";
+import GameSS1 from "../assets/img/GameSS1.png";
+import GameSS2 from "../assets/img/GameSS2.png";
+import GameSS3 from "../assets/img/GameSS3.png";
+import GameSS4 from "../assets/img/GameSS4.png";
+import GameSS5 from "../assets/img/GameSS5.png";
+import GameSS6 from "../assets/img/GameSS6.png";
 
 
 import { useMemo, useState, useEffect } from "react";

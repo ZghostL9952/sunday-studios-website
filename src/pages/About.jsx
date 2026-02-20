@@ -10,9 +10,14 @@ import imgAphena from '../assets/img/Aphena Sov.jpeg'
 import imgArbaz from '../assets/img/Arbaz Khan.jpeg'
 import imgAriane from '../assets/img/Ariane Marchese.JPG'
 import imgAshley from '../assets/img/Ashley Celidon.jpg'
+import imgBrian from '../assets/img/Brian Ren-Sawyer.jpg'
+import imgBrooke from '../assets/img/Brooke Johnson.jpeg'
 import imgCharlie from '../assets/img/Charlie des Robert.png'
+import imgChristina from '../assets/img/Christina Ou.webp'
 import imgDaniel from '../assets/img/Daniel Fornell.jpg'
+import imgForest from '../assets/img/Forest Wong.jpeg'
 import imgGeno from '../assets/img/Geno Jones.png'
+import imgHudson from '../assets/img/Hudson Janow.jpg'
 import imgIsaiah from '../assets/img/Isaiah Hogue.jpeg'
 import imgIvy from '../assets/img/Ivy Immediato.png'
 import imgJack from '../assets/img/Jack Goulden.JPG'
@@ -20,50 +25,81 @@ import imgJamari from '../assets/img/Jamari Miller.jpg'
 import imgJonas from '../assets/img/Jonas Ma.jpg'
 import imgJoey from '../assets/img/Joey Matsumoto.jpeg'
 import imgJoshua from '../assets/img/Joshua Villanueva.JPG'
+import imgJules from '../assets/img/Jules Tobler.jpg'
+import imgKai from '../assets/img/Kai Goldfein.jpeg'
 import imgKaley from '../assets/img/Kaley Akemann.jpeg'
+import imgKelvin from '../assets/img/Kelvin Melendez.jpg'
+import imgKeygen from '../assets/img/keygen aka jenny schumann.jpeg'
+import imgKiara from '../assets/img/Kiara Tyler Cooper.jpg'
 import imgKylie from '../assets/img/Kylie Kwon.jpg'
 import imgLily from '../assets/img/Lily Vengco.jpeg'
+import imgMaganda from '../assets/img/Maganda Marie.jpg'
+import imgMatthew from '../assets/img/Matthew Shwe.jpg'
 import imgMichael from '../assets/img/Michael Fritz.jpg'
+import imgNimra from '../assets/img/Nimra Farhan .jpg'
 import imgOlivia from '../assets/img/Olivia Bascombe.jpeg'
+import imgPedro from '../assets/img/Pedro Saravia.jpeg'
 import imgQuentin from '../assets/img/Quentin Higgins.png'
+import imgRachel from '../assets/img/Rachel Gao.png'
 import imgRosalie from '../assets/img/Rosalie Fong.jpeg'
 import imgTabea from '../assets/img/Tabea Kavayé.png'
+import imgTasmin from '../assets/img/Tasmin Singh.jpg'
 import imgVictoriaCho from '../assets/img/Victoria Cho.png'
 import imgVictoriaLing from '../assets/img/Victoria Ling.jpg'
 import imgVivian from '../assets/img/Vivian Lu.JPG'
+import imgWes from '../assets/img/Wes Haas.jpg'
 import imgYao from '../assets/img/Yao Chang.jpg'
 import imgYiyi from '../assets/img/Yiyi Fang.jpeg'
+import imgAmaya from '../assets/img/Amaya A.K.A Lexie Dreamstate.jpg'
 
 const NAME_TO_IMAGE = {
-  'Amelie Zhao': imgAmelie,
-  'Andrew Park': imgAndrew,
-  'Aphena Sov': imgAphena,
-  'Arbaz M. Khan': imgArbaz,
-  'Ariane Marchese': imgAriane,
+  'Jonas Ma': imgJonas,
   'Ashley C': imgAshley,
-  'Charlie des Robert': imgCharlie,
-  'Daniel Fornell': imgDaniel,
+  'Arbaz M. Khan': imgArbaz,
   'Geno C. Jones': imgGeno,
-  'Isaiah Lee Hogue': imgIsaiah,
+  'Yao Chang': imgYao,
+  'Kaley Akemann': imgKaley,
   'Ivy Immediato': imgIvy,
   'Jack Goulden': imgJack,
-  'Jamari Miller': imgJamari,
-  'Jonas Ma': imgJonas,
-  'Joey Matsumoto': imgJoey,
-  'Josh Villanueva': imgJoshua,
-  'Kaley Akemann': imgKaley,
-  'Kylie Kwon': imgKylie,
-  'Lily Vengco': imgLily,
-  'Michael Fritz': imgMichael,
   'Olivia Bascombe': imgOlivia,
+  'Joey Matsumoto': imgJoey,
+  'Amelie Zhao': imgAmelie,
+  'Jamari Miller': imgJamari,
+  'Ariane Marchese': imgAriane,
   'Quentin Higgins': imgQuentin,
   'Rosalie Fong': imgRosalie,
-  'Tabea Kavayé': imgTabea,
+  'Isaiah Lee Hogue': imgIsaiah,
+  'Aphena Sov': imgAphena,
   'Victoria Cho': imgVictoriaCho,
-  'Victoria Ling': imgVictoriaLing,
+  'Kiara Tyler-Cooper': imgKiara,
+  'Andrew Park': imgAndrew,
+  'Lily Vengco': imgLily,
+  'Josh Villanueva': imgJoshua,
+  'Michael Fritz': imgMichael,
   'Vivian Lu': imgVivian,
-  'Yao Chang': imgYao,
-  'Yiyi Fang': imgYiyi
+  'Daniel Fornell': imgDaniel,
+  'Victoria Ling': imgVictoriaLing,
+  'Tabea Kavayé': imgTabea,
+  'Kylie Kwon': imgKylie,
+  'Charlie des Robert': imgCharlie,
+  'Yiyi Fang': imgYiyi,
+  'Amaya A.K.A Lexie Dreamstate': imgAmaya,
+  'keygen aka jenny schumann': imgKeygen,
+  'Forest Wong': imgForest,
+  'Nimra Farhan': imgNimra,
+  'Rachel Gao': imgRachel,
+  'Wes Haas': imgWes,
+  'Hudson Janow': imgHudson,
+  'Christina Ou': imgChristina,
+  'Brooke Johnson': imgBrooke,
+  'Matthew Shwe': imgMatthew,
+  'Jules Tobler': imgJules,
+  'Kai Goldfein': imgKai,
+  'Maganda Marie': imgMaganda,
+  'Pedro Saravia-Castillo': imgPedro,
+  'Kelvin Melendez': imgKelvin,
+  'Tasmin Singh': imgTasmin,
+  'Brian Ren-Sawyer': imgBrian
 }
 
 function About() {
