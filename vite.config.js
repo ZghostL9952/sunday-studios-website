@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     rollupOptions: {
-      input: "index.dev.html",
+      input: "index.html",
     },
   },
 })
