@@ -101,13 +101,16 @@ export const TEAM_MEMBERS = [
   { name: 'Jules Tobler', role: '2D Artist, Writer', teams: ['Art', 'Narrative'] },
   { name: 'Kai Goldfein', role: 'Level designer, Environment Art Lead', teams: ['Art'] },
   { name: 'Maganda Marie', role: 'Voice Actor - Angel', teams: ['Music/Sound'] },
-
-  // UPDATED: Pedro now appears in Programming (and is sortable to first there)
-  { name: 'Pedro Saravia-Castillo', role: 'Programmer, DJ, walla/background', teams: ['Programming', 'Music/Sound'] },
-
+  { name: 'Pedro Saravia-Castillo', role: 'DJ, walla/background', teams: ['Music/Sound'] },
   { name: 'Kelvin Melendez', role: 'Voice Actor of Caleb', teams: ['Music/Sound'] },
   { name: 'Tasmin Singh', role: 'Voice Actor (Nora)', teams: ['Music/Sound'] },
-  { name: 'Brian Ren-Sawyer', role: 'Writer', teams: ['Narrative'] }
+  { name: 'Brian Ren-Sawyer', role: 'Writer', teams: ['Narrative'] },
+  // NEW: Programming Lead placeholder (no image)
+{
+  name: 'Pedro P',
+  role: 'Programming Lead',
+  teams: ['Programming']
+},
 ]
 
 export function buildTeamsFromMembers(members, nameToImage) {
@@ -149,7 +152,7 @@ export function buildTeamsFromMembers(members, nameToImage) {
   teams['art'].members.sort(sortByPreferredNames(['Jonas Ma', 'Kai Goldfein']))
 
   // Programming: Pedro first
-  teams['programming'].members.sort(sortByPreferredNames(['Pedro Saravia-Castillo']))
+  teams['programming'].members.sort(sortByPreferredNames(['Pedro P']))
 
   // Narrative: Hudson, Yao, Lily first; then Writers; then Narrative Designers
   teams['narrative'].members.sort(narrativeSort)
