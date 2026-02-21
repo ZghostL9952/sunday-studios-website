@@ -50,68 +50,68 @@ function Home() {
 
       {/* MOVED CONTENT TARGET */}
       <div ref={learnMoreRef} className="home-learn-more">
-        {/* Game Overview Section (moved from UsFiveForever) */}
-        <section className="game-overview-section">
-          <div className="overview-container">
-            <div className="game-cover-container">
-              <img
-                src={gameCoverImage}
-                alt="US FIVE FOREVER Game Cover"
-                className="game-cover-image"
-              />
+      {/* Game Trailer Section FIRST */}
+      <section className="trailer-section">
+        <h2 className="trailer-heading">GAME TRAILER</h2>
+
+        <div className="trailer-video-box">
+          <video
+            className="trailer-video"
+            src={trailerVideo}
+            controls
+            controlsList="nodownload"
+            playsInline
+            preload="metadata"
+            onContextMenu={(e) => e.preventDefault()}
+            aria-label="Us Five Forever game trailer"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      {/* Game Overview Section SECOND */}
+      <section className="game-overview-section">
+        <div className="overview-container">
+          <div className="game-cover-container">
+            <img
+              src={gameCoverImage}
+              alt="US FIVE FOREVER Game Cover"
+              className="game-cover-image"
+            />
+          </div>
+
+          <div className="overview-content">
+            <div className="steam-availability">
+              <p className="available-text">AVAILABLE ON</p>
+              <a
+                href="https://store.steampowered.com/app/4125820/Us_Five_Forever/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="steam-logo-container"
+              >
+                <img src={steamLogo} alt="Steam" className="steam-logo-image" />
+              </a>
             </div>
 
-            <div className="overview-content">
-              <div className="steam-availability">
-                <p className="available-text">AVAILABLE ON</p>
-                <a
-                  href="https://store.steampowered.com/app/4125820/Us_Five_Forever/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="steam-logo-container"
-                >
-                  <img src={steamLogo} alt="Steam" className="steam-logo-image" />
-                </a>
-              </div>
+            <p className="game-description">
+              US FIVE FOREVER is the first episode of a narrative mystery game that follows a
+              group of former friends who share a strange connection with each other. Find your
+              missing friend while at a party in the frat mansion he disappeared in, and solve
+              the mystery of your entanglement before the sun rises.
+            </p>
 
-              <p className="game-description">
-                US FIVE FOREVER is the first episode of a narrative mystery game that follows a
-                group of former friends who share a strange connection with each other. Find your
-                missing friend while at a party in the frat mansion he disappeared in, and solve
-                the mystery of your entanglement before the sun rises.
-              </p>
-
-              <div className="features-section">
-                <h3 className="features-heading">FEATURES</h3>
-                <ul className="features-list">
-                  <li>Original Art And Soundtrack</li>
-                  <li>Puzzle Mechanics</li>
-                  <li>NO Generative AI</li>
-                </ul>
-              </div>
+            <div className="features-section">
+              <h3 className="features-heading">FEATURES</h3>
+              <ul className="features-list">
+                <li>Original Art And Soundtrack</li>
+                <li>Puzzle Mechanics</li>
+                <li>NO Generative AI</li>
+              </ul>
             </div>
           </div>
-        </section>
-
-        {/* Game Trailer Section (moved from UsFiveForever) */}
-        <section className="trailer-section">
-          <h2 className="trailer-heading">GAME TRAILER</h2>
-
-          <div className="trailer-video-box">
-            <video
-              className="trailer-video"
-              src={trailerVideo}
-              controls
-              controlsList="nodownload"
-              playsInline
-              preload="metadata"
-              onContextMenu={(e) => e.preventDefault()}
-              aria-label="Us Five Forever game trailer"
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </section>
+        </div>
+      </section>
 
         {/* Next Step CTA */}
         <section className="home-next-step">

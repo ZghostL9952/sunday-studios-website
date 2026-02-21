@@ -110,13 +110,14 @@ function About() {
     []
   )
 
+  // UPDATED ORDER: Production before Art
   const departments = [
+    { id: 'production', name: 'Production' },
     { id: 'art', name: 'Art' },
     { id: 'narrative', name: 'Narrative' },
     { id: 'programming', name: 'Programming' },
     { id: 'music-sound', name: 'Music/Sound' },
     { id: 'marketing', name: 'Marketing' },
-    { id: 'production', name: 'Production' },
     { id: 'game-design', name: 'Game Design' }
   ]
 
@@ -156,39 +157,46 @@ function About() {
           </div>
         </section>
 
-        {Object.entries(teams).map(([teamId, team]) => (
-          <section
-            key={teamId}
-            id={`team-${teamId}`}
-            className="team-members-section"
-          >
-            <h3 className="team-section-title">{team.name}</h3>
-            <div className="team-members-grid">
-              {team.members.map((member) => (
-                <div key={member.id} className="team-member">
-                  <div className="member-image-container">
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="member-image"
-                      />
-                    ) : (
-                      <div className="member-image-placeholder" />
-                    )}
+        {/* UPDATED: render sections in the same order as departments */}
+        {departments.map(({ id: teamId }) => {
+          const team = teams[teamId]
+          if (!team) return null
+
+          return (
+            <section
+              key={teamId}
+              id={`team-${teamId}`}
+              className="team-members-section"
+            >
+              <h3 className="team-section-title">{team.name}</h3>
+              <div className="team-members-grid">
+                {team.members.map((member) => (
+                  <div key={member.id} className="team-member">
+                    <div className="member-image-container">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="member-image"
+                        />
+                      ) : (
+                        <div className="member-image-placeholder" />
+                      )}
+                    </div>
+                    <p className="member-name">{member.name}</p>
+                    <div className="member-role">
+                      {member.role.split(', ').map((part, i) => (
+                        <span key={i} className="member-role-line">{part}</span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="member-name">{member.name}</p>
-                  <div className="member-role">
-                    {member.role.split(', ').map((part, i) => (
-                      <span key={i} className="member-role-line">{part}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+                ))}
+              </div>
+            </section>
+          )
+        })}
       </div>
+
       <footer className="landing-footer">
         <p className="footer-copyright">© Sunday Studios, 2025</p>
         <div className="footer-links">

@@ -15,6 +15,48 @@ function normalizeTeam(teamStr) {
   return map[teamStr.trim()] || teamStr.trim().toLowerCase().replace(/\s+/g, '-')
 }
 
+function normalizeRole(str = '') {
+  return String(str).toLowerCase()
+}
+
+function sortByPreferredNames(preferred = []) {
+  const index = new Map(preferred.map((n, i) => [n, i]))
+  return (a, b) => {
+    const ai = index.has(a.name) ? index.get(a.name) : 9999
+    const bi = index.has(b.name) ? index.get(b.name) : 9999
+    if (ai !== bi) return ai - bi
+    return a.name.localeCompare(b.name)
+  }
+}
+
+function narrativeSort(a, b) {
+  const top = ['Hudson Janow', 'Yao Chang', 'Lily Vengco']
+  const topIndex = new Map(top.map((n, i) => [n, i]))
+
+  const aTop = topIndex.has(a.name) ? topIndex.get(a.name) : null
+  const bTop = topIndex.has(b.name) ? topIndex.get(b.name) : null
+  if (aTop !== null || bTop !== null) {
+    if (aTop === null) return 1
+    if (bTop === null) return -1
+    return aTop - bTop
+  }
+
+  const ar = normalizeRole(a.role)
+  const br = normalizeRole(b.role)
+
+  const aIsWriter = ar.includes('writer')
+  const bIsWriter = br.includes('writer')
+
+  const aIsND = ar.includes('narrative designer')
+  const bIsND = br.includes('narrative designer')
+
+  // Writers first, then Narrative Designers
+  if (aIsWriter !== bIsWriter) return aIsWriter ? -1 : 1
+  if (aIsND !== bIsND) return aIsND ? 1 : -1
+
+  return a.name.localeCompare(b.name)
+}
+
 export const TEAM_MEMBERS = [
   { name: 'Jonas Ma', role: 'Game Director, Art Director, Character Designer', teams: ['Art', 'Programming', 'Marketing', 'Production', 'Game Design'] },
   { name: 'Ashley C', role: 'Narrative Designer (Implementation), Writer', teams: ['Narrative'] },
@@ -59,7 +101,10 @@ export const TEAM_MEMBERS = [
   { name: 'Jules Tobler', role: '2D Artist, Writer', teams: ['Art', 'Narrative'] },
   { name: 'Kai Goldfein', role: 'Level designer, Environment Art Lead', teams: ['Art'] },
   { name: 'Maganda Marie', role: 'Voice Actor - Angel', teams: ['Music/Sound'] },
-  { name: 'Pedro Saravia-Castillo', role: 'DJ, walla/background', teams: ['Music/Sound'] },
+
+  // UPDATED: Pedro now appears in Programming (and is sortable to first there)
+  { name: 'Pedro Saravia-Castillo', role: 'Programmer, DJ, walla/background', teams: ['Programming', 'Music/Sound'] },
+
   { name: 'Kelvin Melendez', role: 'Voice Actor of Caleb', teams: ['Music/Sound'] },
   { name: 'Tasmin Singh', role: 'Voice Actor (Nora)', teams: ['Music/Sound'] },
   { name: 'Brian Ren-Sawyer', role: 'Writer', teams: ['Narrative'] }
@@ -97,6 +142,17 @@ export function buildTeamsFromMembers(members, nameToImage) {
     })
     memberId++
   })
+
+  // --- TEAM MEMBER ORDERING OVERRIDES ---
+
+  // Art: put Kai right after Jonas
+  teams['art'].members.sort(sortByPreferredNames(['Jonas Ma', 'Kai Goldfein']))
+
+  // Programming: Pedro first
+  teams['programming'].members.sort(sortByPreferredNames(['Pedro Saravia-Castillo']))
+
+  // Narrative: Hudson, Yao, Lily first; then Writers; then Narrative Designers
+  teams['narrative'].members.sort(narrativeSort)
 
   return teams
 }
