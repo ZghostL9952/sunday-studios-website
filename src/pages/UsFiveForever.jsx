@@ -3,7 +3,8 @@ import groupImage from "@/assets/group.png";
 import logoImage from "@/assets/logo.png";
 import libraryHeroImage from "@/assets/libraryhero.png";
 import gameCoverImage from "@/assets/game_cover.png";
-import trailerVideo from "@/assets/UFF trailer long.mp4";
+// Set VITE_TRAILER_VIDEO_URL in .env (or .env.local) after hosting Trailer long.mov (e.g. YouTube, Vimeo, or CDN)
+const trailerVideo = import.meta.env.VITE_TRAILER_VIDEO_URL ?? "";
 import gameSS1 from "@/assets/GameSS1.png";
 import gameSS2 from "@/assets/GameSS2.png";
 import gameSS3 from "@/assets/GameSS3.png";

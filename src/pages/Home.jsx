@@ -6,7 +6,8 @@ import logoImage from "@/assets/logo.png";
 
 import gameCoverImage from "@/assets/game_cover.png";
 import steamLogo from "@/assets/steam.png";
-import trailerVideo from "@/assets/UFF trailer long.mp4";
+// Set VITE_TRAILER_VIDEO_URL in .env (or .env.local) after hosting Trailer long.mov (e.g. YouTube, Vimeo, or CDN)
+const trailerVideo = import.meta.env.VITE_TRAILER_VIDEO_URL ?? "";
 
 function Home() {
   const learnMoreRef = useRef(null);
