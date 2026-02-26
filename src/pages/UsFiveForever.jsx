@@ -3,8 +3,7 @@ import groupImage from "@/assets/group.png";
 import logoImage from "@/assets/logo.png";
 import libraryHeroImage from "@/assets/libraryhero.png";
 import gameCoverImage from "@/assets/game_cover.png";
-// Set VITE_TRAILER_VIDEO_URL in .env (or .env.local) after hosting Trailer long.mov (e.g. YouTube, Vimeo, or CDN)
-const trailerVideo = import.meta.env.VITE_TRAILER_VIDEO_URL ?? "";
+const YOUTUBE_TRAILER_EMBED = "https://www.youtube.com/embed/na7hNBtSUQs?si=v3UA530gP4JNgM1Q";
 import gameSS1 from "@/assets/GameSS1.png";
 import gameSS2 from "@/assets/GameSS2.png";
 import gameSS3 from "@/assets/GameSS3.png";
@@ -208,18 +207,14 @@ function UsFiveForever() {
       <section className="trailer-section">
         <h2 className="trailer-heading">GAME TRAILER</h2>
         <div className="trailer-video-box">
-          <video
+          <iframe
             className="trailer-video"
-            src={trailerVideo}
-            controls
-            controlsList="nodownload"
-            playsInline
-            preload="metadata"
-            onContextMenu={(e) => e.preventDefault()}
-            aria-label="Us Five Forever game trailer"
-          >
-            Your browser does not support the video tag.
-          </video>
+            src={YOUTUBE_TRAILER_EMBED}
+            title="Us Five Forever game trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
       </section>
 

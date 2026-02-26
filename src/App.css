@@ -856,8 +856,10 @@
 .trailer-video {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   display: block;
+  border: none;
 }
 
 .video-placeholder {
